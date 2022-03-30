@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <link rel="stylesheet" href="src/styles.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;1,200;1,300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/82d7c8893c.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+      <div class="container">
+      <div class="app">
+      <div class="row">
+      <div class="col-6">
+    <div class="left">
+         <form id="search-bar">
+            <div class="input-group input-group-lg">
+              <input
+                type="search"
+                id="search-input"
+                class="form-control form-control-lg rounded"
+                placeholder="Search a city"
+              />
+              <span class="input-group-text" id="inputGroup-sizing-lg">
+                <button id="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+              </span>
+            </div>
+          </form>
+           <button class="locPin" id="loc-button"><i class="fa-solid fa-location-dot"></i></button>
+        
+        <img class="main" src="images/sunny.svg" width="280px" />
+        <h1>
+          <span id="temp-value"></span>
+          <span class="scale">
+            <a href="#" class="tempUnit" id="celcius">°C</a>|<a href="#" class="tempUnit" id="farenheit">°F</a>
+          </span></h1>
+            <h2>
+          <span class="city" id="current-city"></span>, 
+          <span class ="country" id="current-country"></span>
+        </h2>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="row">
+            <div class="col-6">
+                <i class="fa-solid fa-sun mainicon"></i>
+        <h4></h4>
+        </div>
+        <div class="col-6 today" id="current-time">
+                <br/>
+        </div>
+        </div>
+        <div class="row compact">
+            <div class="col temperature">
+               <i class="fa-solid fa-temperature-full"></i>
+               <span id ="max-temp"></span>/<span id="min-temp"></span>
+            </div>
+           <div class="col wind">
+               <i class="fa-solid fa-wind"></i>
+               <span id="wind"></span>
+            </div>
+            <div class="col humidity">
+           <i class="fa-solid fa-droplet"></i>
+           <span id="humidity"></span>
+            </div>
+        </div>
+        <div class="wholeWeek">
+        <div class="row">
+               <div class="col-2 weekday">
+             
+                SUN
+        <i class="fa-solid fa-sun"></i>
+        <br/>
+        <br/>
+        10 °C
+        6 °C
+                
+                </div>
+                <div class="col-2 weekday">
+             
+                MON
+        <i class="fa-solid fa-sun"></i>
+         <br/>
+            <br/>
+        10 °C
+        6 °C
+                
+                </div>  <div class="col-2 weekday">
+             
+                TUE
+        <i class="fa-solid fa-sun"></i>
+         <br/>
+            <br/>
+                10 °C
+                6 °C
+
+        </div>  
+                <div class="col-2 weekday">
+             
+                WED
+        <i class="fa-solid fa-sun"></i>
+         <br/>
+         <br/>
+        10 °C
+        6 °C
+        
+                
+                </div>  <div class="col-2 weekday">
+             
+                THU
+        <i class="fa-solid fa-sun"></i>
+         <br/>
+           <br/>
+        10 °C
+        6 °C
+                
+                </div>
+        </div>
+        </div>
+      
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+ <script src="src/index.js"></script>
+  </body>
+</html>
