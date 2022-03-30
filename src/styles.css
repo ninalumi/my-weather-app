@@ -48,6 +48,14 @@ button {
   background-color: white;
 }
 
+.author {
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+  color: #77529e;
+  margin-top: 20px;
+  font-size: 15px;
+}
+
 .locPin {
   position: relative;
   top: 2px;
