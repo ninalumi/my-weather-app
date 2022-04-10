@@ -141,3 +141,12 @@ button {
   text-align: center;
   font-family: "Josefin Sans", sans-serif;
 }
+
+.active {
+  color: #77529e;
+  cursor: default;
+}
+
+.active:hover {
+  color: #77529e;
+}

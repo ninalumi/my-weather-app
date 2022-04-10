@@ -37,22 +37,6 @@ let currentTime = document.querySelector("#current-time");
 
 currentTime.innerHTML = `${hour}:${minute} <br/> ${day}, ${date} ${month}`;
 
-function changeUnit(event) {
-  event.preventDefault();
-  let temperature = document.querySelector("#temp-value");
-  if (event.target.id === "celcius") {
-    temperature.innerHTML = 19;
-  } else {
-    temperature.innerHTML = 66;
-  }
-}
-
-let changeToC = document.querySelector("#celcius");
-changeToC.addEventListener("click", changeUnit);
-
-let changeToF = document.querySelector("#farenheit");
-changeToF.addEventListener("click", changeUnit);
-
 function search(city) {
   let apiKey = "c0db0c3b54a9ee6e44d7ea7307ac1973";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -70,18 +54,15 @@ let cityInput = document.querySelector("#search-bar");
 cityInput.addEventListener("submit", callApi);
 
 function useApi(response) {
-  let temperature = Math.round(response.data.main.temp);
+  celciusTemp = Math.round(response.data.main.temp);
   let mainTemp = document.querySelector("#temp-value");
-  mainTemp.innerHTML = `${temperature}`;
-  let description = response.data.weather[0].main;
+  mainTemp.innerHTML = `${celciusTemp}`;
   let mainDesc = document.querySelector("h4");
-  mainDesc.innerHTML = `${description}`;
-  let humidity = response.data.main.humidity;
+  mainDesc.innerHTML = response.data.weather[0].main;
   let humValue = document.querySelector("#humidity");
-  humValue.innerHTML = `${humidity}%`;
-  let wind = Math.round(response.data.wind.speed);
+  humValue.innerHTML = response.data.main.humidity;
   let windValue = document.querySelector("#wind");
-  windValue.innerHTML = `${wind} m/s`;
+  windValue.innerHTML = Math.round(response.data.wind.speed);
   let maxTemp = Math.round(response.data.main.temp_max);
   let maxTempValue = document.querySelector("#max-temp");
   maxTempValue.innerHTML = `${maxTemp} °C`;
@@ -89,11 +70,9 @@ function useApi(response) {
   let minTempValue = document.querySelector("#min-temp");
   minTempValue.innerHTML = `${minTemp} °C`;
   let currentCity = document.querySelector("#current-city");
-  let foundCity = response.data.name;
-  currentCity.innerHTML = `${foundCity}`;
+  currentCity.innerHTML = response.data.name;
   let currentCountry = document.querySelector("#current-country");
-  let foundCountry = response.data.sys.country;
-  currentCountry.innerHTML = `${foundCountry}`;
+  currentCountry.innerHTML = response.data.sys.country;
 }
 
 function findCity(event) {
@@ -108,6 +87,31 @@ function findCity(event) {
 
   navigator.geolocation.getCurrentPosition(handlePosition);
 }
+
+function changetoF(event) {
+  event.preventDefault();
+  changeToC.classList.remove("active");
+  changeToF.classList.add("active");
+  let fahrenheitTemp = (celciusTemp * 9) / 5 + 32;
+  let mainTemp = document.querySelector("#temp-value");
+  mainTemp.innerHTML = Math.round(fahrenheitTemp);
+}
+
+function changetoC(event) {
+  event.preventDefault();
+  changeToC.classList.add("active");
+  changeToF.classList.remove("active");
+  let mainTemp = document.querySelector("#temp-value");
+  mainTemp.innerHTML = celciusTemp;
+}
+
+let celciusTemp = null;
+
+let changeToC = document.querySelector("#celcius");
+changeToC.addEventListener("click", changetoC);
+
+let changeToF = document.querySelector("#farenheit");
+changeToF.addEventListener("click", changetoF);
 
 let locInput = document.querySelector("#loc-button");
 locInput.addEventListener("click", findCity);
