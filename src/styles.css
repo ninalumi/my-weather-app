@@ -27,7 +27,10 @@ h2 {
 h4 {
   font-family: "Josefin Sans", sans-serif;
   color: #77529e;
-  padding-top: 30px;
+  margin-left: 12px;
+}
+h4::first-letter {
+  text-transform: capitalize;
 }
 
 i {
@@ -96,13 +99,10 @@ button {
   background-color: rgb(255, 255, 255, 0.6);
 }
 
-.mainicon {
-  display: block;
-  width: 60px;
-  height: 60px;
-  font-size: 50px;
-  padding-top: 30px;
+.mainIcon {
+  margin-left: -10px;
 }
+
 .today {
   padding-top: 30px;
   font-size: 18px;

@@ -59,11 +59,12 @@ function useApi(response) {
   let mainTemp = document.querySelector("#temp-value");
   mainTemp.innerHTML = `${celciusTemp}`;
   let mainDesc = document.querySelector("h4");
-  mainDesc.innerHTML = response.data.weather[0].main;
+  mainDesc.innerHTML = response.data.weather[0].description;
   let humValue = document.querySelector("#humidity");
   humValue.innerHTML = response.data.main.humidity;
   let windValue = document.querySelector("#wind");
-  windValue.innerHTML = Math.round(response.data.wind.speed);
+  let wind = Math.round(response.data.wind.speed);
+  windValue.innerHTML = `${wind} km/h`;
   let maxTemp = Math.round(response.data.main.temp_max);
   let maxTempValue = document.querySelector("#max-temp");
   maxTempValue.innerHTML = `${maxTemp} °C`;
@@ -76,6 +77,12 @@ function useApi(response) {
   currentCountry.innerHTML = response.data.sys.country;
   let currentTime = document.querySelector("#current-time");
   currentTime.innerHTML = formatDate(response.data.dt * 1000);
+  let iconElement = document.querySelector("#main-icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function findCity(event) {
