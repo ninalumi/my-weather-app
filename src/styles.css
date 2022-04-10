@@ -105,6 +105,7 @@ button {
 }
 .today {
   padding-top: 30px;
+  font-size: 18px;
   font-family: "Josefin Sans", sans-serif;
   color: #77529e;
 }
@@ -149,4 +150,9 @@ button {
 
 .active:hover {
   color: #77529e;
+}
+
+.last {
+  font-size: 14px;
+  opacity: 60%;
 }

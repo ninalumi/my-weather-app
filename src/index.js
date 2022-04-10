@@ -1,41 +1,45 @@
-let now = new Date();
-let hour = now.getHours();
-if (hour < 10) {
-  hour = `0${hour}`;
-}
-let minute = now.getMinutes();
-if (minute < 10) {
-  minute = `0${minute}`;
-}
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-let month = months[now.getMonth()];
-let date = now.getDate();
-let currentTime = document.querySelector("#current-time");
+function formatDate(timestamp) {
+  let fullDate = new Date(timestamp);
+  let hours = fullDate.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = fullDate.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
 
-currentTime.innerHTML = `${hour}:${minute} <br/> ${day}, ${date} ${month}`;
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  let date = fullDate.getDate();
+
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  let month = months[fullDate.getMonth()];
+  let day = days[fullDate.getDay()];
+  return `${hours}:${minutes} <br /> ${day}, ${date} ${month}`;
+}
 
 function search(city) {
   let apiKey = "c0db0c3b54a9ee6e44d7ea7307ac1973";
@@ -49,9 +53,6 @@ function callApi(event) {
   city = cityInput.value;
   search(city);
 }
-
-let cityInput = document.querySelector("#search-bar");
-cityInput.addEventListener("submit", callApi);
 
 function useApi(response) {
   celciusTemp = Math.round(response.data.main.temp);
@@ -73,6 +74,8 @@ function useApi(response) {
   currentCity.innerHTML = response.data.name;
   let currentCountry = document.querySelector("#current-country");
   currentCountry.innerHTML = response.data.sys.country;
+  let currentTime = document.querySelector("#current-time");
+  currentTime.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 function findCity(event) {
@@ -104,6 +107,9 @@ function changetoC(event) {
   let mainTemp = document.querySelector("#temp-value");
   mainTemp.innerHTML = celciusTemp;
 }
+
+let cityInput = document.querySelector("#search-bar");
+cityInput.addEventListener("submit", callApi);
 
 let celciusTemp = null;
 
