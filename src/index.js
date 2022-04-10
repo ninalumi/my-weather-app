@@ -61,7 +61,8 @@ function useApi(response) {
   let mainDesc = document.querySelector("h4");
   mainDesc.innerHTML = response.data.weather[0].description;
   let humValue = document.querySelector("#humidity");
-  humValue.innerHTML = response.data.main.humidity;
+  let humidity = response.data.main.humidity;
+  humValue.innerHTML = `${humidity} %`;
   let windValue = document.querySelector("#wind");
   let wind = Math.round(response.data.wind.speed);
   windValue.innerHTML = `${wind} km/h`;
