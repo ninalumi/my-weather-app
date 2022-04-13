@@ -112,6 +112,7 @@ button {
 
 .main {
   display: block;
+  height: 300px;
   margin: 0 auto;
   padding: 30px;
 }

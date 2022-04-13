@@ -84,6 +84,11 @@ function useApi(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  let imageElement = document.querySelector("#main-pic");
+  imageElement.setAttribute(
+    "src",
+    `images/${response.data.weather[0].icon}.svg`
+  );
 }
 
 function findCity(event) {
