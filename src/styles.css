@@ -41,7 +41,7 @@ i {
 form {
   display: inline-block;
   margin-bottom: 20px;
-  padding: 10px 0px 16px 30px;
+  padding: 10px 0px 16px 20px;
   font-size: 20px;
   font-weight: 300;
 }
@@ -82,7 +82,7 @@ button {
   background-color: rgb(165, 189, 253, 0.17);
   border-radius: 12px;
   padding-bottom: 20px;
-  height: 519px;
+  height: 522px;
 }
 
 .app {
@@ -95,7 +95,7 @@ button {
   border-radius: 12px;
   display: block;
   width: 800px;
-  height: 519px;
+  height: 522px;
   background-color: rgb(255, 255, 255, 0.6);
 }
 
@@ -138,7 +138,7 @@ button {
   margin-left: 6px;
   margin-right: 3px;
   position: relative;
-  top: 140px;
+  top: 150px;
   text-align: center;
   font-family: "Josefin Sans", sans-serif;
 }
