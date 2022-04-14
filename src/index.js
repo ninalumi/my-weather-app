@@ -104,7 +104,7 @@ function useApi(response) {
   humValue.innerHTML = `${humidity} %`;
   let windValue = document.querySelector("#wind");
   let wind = Math.round(response.data.wind.speed);
-  windValue.innerHTML = `${wind} km/h`;
+  windValue.innerHTML = `${wind} m/s`;
   let maxTemp = Math.round(response.data.main.temp_max);
   let maxTempValue = document.querySelector("#max-temp");
   maxTempValue.innerHTML = `${maxTemp}°C`;
