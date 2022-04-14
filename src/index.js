@@ -41,7 +41,8 @@ function formatDate(timestamp) {
   return `${hours}:${minutes} <br /> ${day}, ${date} ${month}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let days = ["THU", "FRI", "SAT", "SUN", "MON"];
 
@@ -61,13 +62,18 @@ function displayForecast() {
   forecastHTML = forecastHTML + `</div>`;
 
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
 }
 
 function search(city) {
   let apiKey = "c0db0c3b54a9ee6e44d7ea7307ac1973";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(url).then(useApi);
+}
+
+function getForecast(coordinates) {
+  let apiKey = "c0db0c3b54a9ee6e44d7ea7307ac1973";
+  let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
+  axios.get(url).then(displayForecast);
 }
 
 function callApi(event) {
@@ -112,6 +118,7 @@ function useApi(response) {
     "src",
     `images/${response.data.weather[0].icon}.svg`
   );
+  getForecast(response.data.coord);
 }
 
 function findCity(event) {
@@ -159,4 +166,3 @@ let locInput = document.querySelector("#loc-button");
 locInput.addEventListener("click", findCity);
 
 search("Amsterdam");
-displayForecast();
