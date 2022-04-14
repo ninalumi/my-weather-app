@@ -41,6 +41,29 @@ function formatDate(timestamp) {
   return `${hours}:${minutes} <br /> ${day}, ${date} ${month}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["THU", "FRI", "SAT", "SUN", "MON"];
+
+  let forecastHTML = `<div class = row>`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2 weekday">
+               <span class="eachDay"> ${day} </span>
+        <i class="fa-solid fa-sun"></i>
+        <br/>
+        <br/>
+        10 °C
+        6 °C
+        </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 function search(city) {
   let apiKey = "c0db0c3b54a9ee6e44d7ea7307ac1973";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -68,10 +91,10 @@ function useApi(response) {
   windValue.innerHTML = `${wind} km/h`;
   let maxTemp = Math.round(response.data.main.temp_max);
   let maxTempValue = document.querySelector("#max-temp");
-  maxTempValue.innerHTML = `${maxTemp} °C`;
+  maxTempValue.innerHTML = `${maxTemp}°C`;
   let minTemp = Math.round(response.data.main.temp_min);
   let minTempValue = document.querySelector("#min-temp");
-  minTempValue.innerHTML = `${minTemp} °C`;
+  minTempValue.innerHTML = `${minTemp}°C`;
   let currentCity = document.querySelector("#current-city");
   currentCity.innerHTML = response.data.name;
   let currentCountry = document.querySelector("#current-country");
@@ -136,3 +159,4 @@ let locInput = document.querySelector("#loc-button");
 locInput.addEventListener("click", findCity);
 
 search("Amsterdam");
+displayForecast();

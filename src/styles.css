@@ -144,6 +144,10 @@ button {
   font-family: "Josefin Sans", sans-serif;
 }
 
+.eachDay {
+  opacity: 0.6;
+}
+
 .active {
   color: #77529e;
   cursor: default;
