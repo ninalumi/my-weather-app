@@ -14,20 +14,6 @@ h2 {
   color: #77529e;
 }
 
-.scale {
-  font-size: 17px;
-  position: relative;
-  top: -18px;
-}
-
-.tempValue {
-  font-size: 50px;
-}
-
-.tempUnit {
-  text-decoration: none;
-}
-
 h4 {
   font-family: "Josefin Sans", sans-serif;
   color: #77529e;
@@ -53,6 +39,20 @@ form {
 button {
   border: none;
   background-color: white;
+}
+
+.scale {
+  font-size: 17px;
+  position: relative;
+  top: -18px;
+}
+
+.tempValue {
+  font-size: 50px;
+}
+
+.tempUnit {
+  text-decoration: none;
 }
 
 .author {
@@ -141,7 +141,6 @@ button {
   margin-top: 70px !important;
   margin-left: 6px;
   margin-right: 3px;
-  position: static;
   text-align: center;
   font-family: "Josefin Sans", sans-serif;
   color: #77529e;
